@@ -4,39 +4,37 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="Users")
-public class User {
+public class Evento {
 
     @Id // qui specifichiamo chi e la nostra Primary key
     @GeneratedValue //uguale al SERIAL in Database
     private Long id;
 
-    @Column(name = "Name",nullable = false)  //nullable = false uguale a NOT NULL
-    private String firstname;
+    @Column(name = "Titolo",nullable = false)  //nullable = false uguale a NOT NULL
+    private String titolo;
 
-    @Column(nullable = false)
-    private String lastname;
+    @Column(name = "Descrizione", nullable = false)
+    private String descrizione;
 
-    @Column
-    private int age;
+    @Column(name = "Data Evento")
+    private int dataEvento;
 
-    @Column(length = 25)  //uguale a VARCHAR(25)
-    private String city;
+    @Column(name = "PUBBLICO/PRIVATO", length = 25)  //uguale a VARCHAR(25)
+    private String tipoEvento;
 
-    @Column(unique = true)
-    private String email;
+    @Column(name = "Numero Massimo Partecipanti", unique = true)
+    private int numeroMassimoPartecipanti;
 
-    @Column(nullable = false)
-    private String password;
 
-    public User() {} // questo costruttore è ESSENZIALE perchè servirà al DB CREARE SEMPRE!!!!
+    public Evento() {} // questo costruttore è ESSENZIALE perchè servirà al DB CREARE SEMPRE
 
-    public User(String firstname, String lastname, int age, String city, String email, String password){
-        this.firstname = firstname;
-        this.lastname=lastname;
-        this.age=age;
-        this.city=city;
-        this.email=email;
-        this.password=password;
+    public Evento(String titolo, String descrizione, int dataEvento, String tipoEvento, int numeroMassimoPartecipanti){
+        this.titolo = titolo;
+        this.descrizione = descrizione;
+        this.dataEvento = dataEvento;
+        this.tipoEvento = tipoEvento;
+        this.numeroMassimoPartecipanti = numeroMassimoPartecipanti;
+
     }
 
 }
